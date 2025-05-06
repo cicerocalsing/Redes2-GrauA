@@ -1,8 +1,12 @@
+
 services:
   router0:
     image: frrouting/frr
     container_name: router0
     privileged: true
+    volumes:
+      - ./router0/frr.conf:/etc/frr/frr.conf
+      - ./router0/daemons:/etc/frr/daemons
     networks:
       net0-1:
         ipv4_address: 192.168.0.2
@@ -10,6 +14,9 @@ services:
   router1:
     image: frrouting/frr
     container_name: router1
+    volumes:
+      - ./router1/frr.conf:/etc/frr/frr.conf
+      - ./router1/daemons:/etc/frr/daemons
     privileged: true
     networks:
       net0-1:
@@ -22,18 +29,76 @@ services:
   router2:
     image: frrouting/frr
     container_name: router2
+    volumes:
+      - ./router2/frr.conf:/etc/frr/frr.conf
+      - ./router2/daemons:/etc/frr/daemons
     privileged: true
     networks:
       net1-2:
         ipv4_address: 192.168.1.2
-        
+      # net2-4:
+      #   ipv4_address: 192.168.4.1
+
   router3:
     image: frrouting/frr
     container_name: router3
+    volumes:
+      - ./router3/frr.conf:/etc/frr/frr.conf
+      - ./router3/daemons:/etc/frr/daemons
     privileged: true
     networks:
       net1-3:
         ipv4_address: 192.168.2.2
+
+  router4:
+    image: frrouting/frr
+    container_name: router4
+    volumes:
+      - ./router4/frr.conf:/etc/frr/frr.conf
+      - ./router4/daemons:/etc/frr/daemons
+    privileged: true
+    networks:
+      # net2-4:
+      #   ipv4_address: 192.168.4.2
+      net4-5:
+        ipv4_address: 192.168.5.1
+
+  router5:
+    image: frrouting/frr
+    container_name: router5
+    volumes:
+      - ./router5/frr.conf:/etc/frr/frr.conf
+      - ./router5/daemons:/etc/frr/daemons
+    privileged: true
+    networks:
+      net4-5:
+        ipv4_address: 192.168.5.2
+      net5-6:
+        ipv4_address: 192.168.6.1
+      net5-7:
+        ipv4_address: 192.168.7.1
+
+  router6:
+    image: frrouting/frr
+    container_name: router6
+    volumes:
+      - ./router6/frr.conf:/etc/frr/frr.conf
+      - ./router6/daemons:/etc/frr/daemons
+    privileged: true
+    networks:
+      net5-6:
+        ipv4_address: 192.168.6.2
+
+  router7:
+    image: frrouting/frr
+    container_name: router7
+    volumes:
+      - ./router7/frr.conf:/etc/frr/frr.conf
+      - ./router7/daemons:/etc/frr/daemons
+    privileged: true
+    networks:
+      net5-7:
+        ipv4_address: 192.168.7.2
 
 networks:
   net0-1:
@@ -56,3 +121,31 @@ networks:
       config:
         - subnet: 192.168.2.0/24
           gateway: 192.168.2.254
+
+  # net2-4:
+  #   driver: bridge
+  #   ipam:
+  #     config:
+  #       - subnet: 192.168.4.0/24
+  #         gateway: 192.168.4.254
+
+  net4-5:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.5.0/24
+          gateway: 192.168.5.254
+
+  net5-6:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.6.0/24
+          gateway: 192.168.6.254
+
+  net5-7:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.7.0/24
+          gateway: 192.168.7.254
