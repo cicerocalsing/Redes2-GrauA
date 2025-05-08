@@ -19,7 +19,14 @@ A topologia está dividida em dois domínios:
 - O lado esquerdo da imagem utiliza o protocolo **OSPF**
 - O lado direito utiliza **RIP**
 
-<img src="topologia.png" alt="Topologia da Rede" width="700"/>
+                              REDE OSPF                                                            REDE RIP
+
+router0 --(192.168.0.0/24)-- router1 --(192.168.1.0/24)-- router2      router4 --(192.168.5.0/24)-- router5 --(162.168.6.0/24)-- router6
+                                |                                                                       | 
+                        (192.168.2.0/24)                                                         (192.168.7.0/24)
+                                |                                                                       |
+                              router3                                                                router7
+
 
 ---
 
