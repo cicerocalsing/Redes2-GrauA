@@ -18,6 +18,8 @@ Este projeto simula uma topologia de rede com múltiplos roteadores interconecta
 A topologia está dividida em dois domínios:
 - O lado esquerdo da imagem utiliza o protocolo **OSPF**
 - O lado direito utiliza **RIP**
+```text
+
 
                               REDE OSPF                                                            REDE RIP
 
@@ -26,7 +28,7 @@ router0 --(192.168.0.0/24)-- router1 --(192.168.1.0/24)-- router2      router4 -
                         (192.168.2.0/24)                                                         (192.168.7.0/24)
                                 |                                                                       |
                               router3                                                                router7
-
+```
 
 ---
 
