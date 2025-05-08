@@ -36,8 +36,6 @@ services:
     networks:
       net1-2:
         ipv4_address: 192.168.1.2
-      # net2-4:
-      #   ipv4_address: 192.168.4.1
 
   router3:
     image: frrouting/frr
@@ -58,8 +56,6 @@ services:
       - ./router4/daemons:/etc/frr/daemons
     privileged: true
     networks:
-      # net2-4:
-      #   ipv4_address: 192.168.4.2
       net4-5:
         ipv4_address: 192.168.5.1
 
@@ -121,13 +117,6 @@ networks:
       config:
         - subnet: 192.168.2.0/24
           gateway: 192.168.2.254
-
-  # net2-4:
-  #   driver: bridge
-  #   ipam:
-  #     config:
-  #       - subnet: 192.168.4.0/24
-  #         gateway: 192.168.4.254
 
   net4-5:
     driver: bridge
